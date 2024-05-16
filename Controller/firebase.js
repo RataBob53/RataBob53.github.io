@@ -1,6 +1,5 @@
-import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js'
+import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js';
 import { 
-
   getAuth,
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
@@ -10,19 +9,17 @@ import {
   deleteUser,
   sendEmailVerification,
   sendPasswordResetEmail
-  
-} from 'https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js'
+} from 'https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js';
 import { 
-
   getFirestore,
   collection, 
-  addDoc 
+  addDoc,
+  getDocs,
+  doc,
+  deleteDoc
+} from "https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore.js";
 
-} from "https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore.js"
-
-
-
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+// Configuración de Firebase
 const firebaseConfig = {
   apiKey: "AIzaSyAvSwN3ixzAeun5lv8tpe8OY-Ps0TkoGKM",
   authDomain: "rosalia-b2798.firebaseapp.com",
@@ -35,55 +32,63 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
-const db = getFirestore(app)
+const db = getFirestore(app);
 
-// Métodos de Autenticacion
+// Métodos de Autenticación
 
-// Registro de Usario
+// Registro de Usuario
 export const registerauth = (email, password) =>
-  createUserWithEmailAndPassword(auth, email, password)
+  createUserWithEmailAndPassword(auth, email, password);
 
-// Verifacion por correo
+// Verificación por correo
 export const verification = () =>
-  sendEmailVerification(auth.currentUser)
+  sendEmailVerification(auth.currentUser);
 
 // Autenticación de usuario
 export const loginauth = (email, password) =>
-  signInWithEmailAndPassword(auth, email, password)
+  signInWithEmailAndPassword(auth, email, password);
 
-// Inicio Sesion Google
+// Inicio Sesión Google
 export const googleauth = (provider) =>
-  signInWithPopup(auth, provider)
+  signInWithPopup(auth, provider);
 
-// Inicio Sesion Facebook
+// Inicio Sesión Facebook
 export const facebookauth = (provider) =>
-  signInWithPopup(auth, provider)
+  signInWithPopup(auth, provider);
 
 // Estado del Usuario logeado
 export function userstate(){
   onAuthStateChanged(auth, (user) => {
     if (user) {
-
       const uid = user.uid;
-      console.log(uid)
-
+      console.log(uid);
     } else {
-      window.location.href='../Index.html'
+      window.location.href='../Index.html';
     }
   });
 }
 
 // Restablecer contraseña por correo
 export const recoverypass = (email) =>
-  sendPasswordResetEmail(auth, email)
+  sendPasswordResetEmail(auth, email);
 
-// Cerrar sesion del usuario
+// Cerrar sesión del usuario
 export const loginout = () =>
-  signOut(auth)
+  signOut(auth);
 
 // Eliminar usuario
-export const deleteuser = (user) =>
-  deleteUser(user)
+export const deleteuser = async (user) => {
+  try {
+    await deleteUser(user);
+    // Eliminar el usuario de Firestore
+    const userRef = doc(db, "Usuarios", user.uid);
+    await deleteDoc(userRef);
+    return true;
+  } catch (error) {
+    console.error(error);
+    return false;
+  }
+};
 
 export { auth };
 
@@ -92,16 +97,18 @@ export { auth };
 // Agregar Datos
 export const addregister = (nombres, apellidos, fecha, cedula, estado, rh, genero, telefono, direccion, email) =>
   addDoc(collection(db, "Usuarios"), {
-
     nombre: nombres,
     apellido: apellidos,
     fecha: fecha,
     cedula: cedula,
-    estado:estado,
-    rh:rh,
-    genero:genero,
+    estado: estado,
+    rh: rh,
+    genero: genero,
     telefono: telefono,
     direccion: direccion,
     email: email
-
   });
+
+// Mostrar productos
+export const productosv = () =>
+  getDocs(collection(db, "Usuarios"));
