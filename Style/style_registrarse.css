@@ -1,0 +1,66 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-image: url("/Resource/image.png");
+    background-size: cover;
+    background-position: center;
+    color: #1565c0; /* Azul */
+    font-family: Baskerville, serif;
+}
+
+.container {
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.8); /* Negro con opacidad */
+    padding: 30px; /* Reducción del padding */
+    border-radius: 8px; /* Reducción del radio de borde */
+    width: 75%; /* Reducción del ancho */
+    max-width: 350px; /* Reducción del ancho máximo */
+    height: auto;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.4); /* Sombra más oscura */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.container h1 {
+    margin-bottom: 15px; /* Reducción del margen inferior */
+    font-size: 1.5em; /* Ajuste del tamaño de fuente */
+    color: #90caf9; /* Azul claro */
+}
+
+.container h3 {
+    margin-bottom: 10px;
+    color: #90caf9; /* Azul claro */
+}
+
+input[type="text"],
+input[type="password"],
+input[type="date"],
+input[type="email"],
+select {
+    width: calc(100% - 20px); /* Reducción del ancho de los inputs */
+    padding: 8px; /* Reducción del padding */
+    margin-bottom: 10px; /* Reducción del margen inferior */
+    border: 1px solid #90caf9; /* Borde azul claro */
+    border-radius: 4px; /* Reducción del radio de borde */
+}
+
+button {
+    width: calc(100% - 20px); /* Reducción del ancho del botón */
+    padding: 8px; /* Reducción del padding */
+    margin-bottom: 10px; /* Reducción del margen inferior */
+    background-color: #1565c0; /* Azul */
+    color: #fff;
+    border: none;
+    border-radius: 4px; /* Reducción del radio de borde */
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0d47a1; /* Azul más oscuro */
+}
