@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="/Style/style2.css">
+    <link rel="stylesheet" href="/Style/style_registrarse.css">
 
     <title>Database Registro</title>
 </head>
@@ -21,27 +21,27 @@
               <div class="card-body">
                 <form id="LogUp-Form">
                     <div class="form-group">
-                        <h3>Nombres Completos</h3>
+                        <h3></h3>
                         <input type="text" id="edtnom" class="form-control" placeholder="Ingresa tu nombre completo" required>
                     </div>
                     <div class="form-group">
-                        <h3>Apellidos Completos</h3>
-                        <input type="text" id="edtape" class="form-control" placeholder="Ingresa tu nombre completo" required>
+                        <h3></h3>
+                        <input type="text" id="edtape" class="form-control" placeholder="Ingresa tu apellido completo" required>
                     </div>
                     <div class="form-group">
-                        <h3>Fecha de Nacimiento</h3>
+                        <h3></h3>
                         <input type="date" id="edtfecha" class="form-control" required>
                     </div>
                     <div class="form-group">
-                        <h3>Cédula</h3>
+                        <h3></h3>
                         <input type="text" id="edtcc" class="form-control" placeholder="Ingresa tu número de cédula" required>
                     </div>
                     <div class="form-group">
-                        <h3>Estado Civil</h3>
+                        <h3></h3>
                         <input type="text" id="edtstc" class="form-control" placeholder="Ingresa tu estado civil" required>
                     </div>
                     <div class="form-group">
-                        <h3>Tipo de Sangre [RH]</h3>
+                        <h3>Tipo de Sangre (RH)</h3>
                         <select id="edtrh" required>
                             <option value="A+">A+</option>
                             <option value="A-">A-</option>
@@ -50,7 +50,7 @@
                             <option value="AB+">AB+</option>
                             <option value="AB-">AB-</option>
                             <option value="O+">O+</option>
-                            <option value="O-">O-</option>
+                            <option value="O-">roja</option>
                         </select>
                     </div>
                     <div class="form-group">
@@ -58,7 +58,7 @@
                         <select id="edtgnr" required>
                             <option value="Masculino">Masculino</option>
                             <option value="Femenino">Femenino</option>
-                            <option value="Otro">Otro</option>
+                            <option value="Otro">Carnalito</option>
                         </select>
                     </div>
                     <div class="form-group">
@@ -90,7 +90,6 @@
                     </div>
                     <div class="alert alert-danger d-none" id="confirmPasswordAlert" role="alert">Por favor confirma tu contraseña.</div>
                     <button id="rgsbtn" class="btn btn-primary" type="submit">Registrarse</button> <br>
-                    <button type="button" id="show-password" class="btn btn-secondary">Mostrar contraseña</button> <br>
                     <div class="mt-3 text-center">
                         <button href="/index.html" id="exitbtn" class="btn btn-danger">Iniciar Sesión</button> <br>
                     </div>
